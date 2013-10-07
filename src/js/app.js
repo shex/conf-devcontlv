@@ -10,12 +10,23 @@ App.IndexRoute = Ember.Route.extend({
   }
 });
 
+App.IndexController = Ember.Controller.extend({
+  actions: {
+    approvePage: function (id) {
+      console.log('Approve page with id', id);
+    }
+  }
+});
+
 App.PlusOneComponent = Ember.Component.extend({
   classNameBindings: ['isEnabled:enabled:disabled'],
   isEnabled: true,
   actions: {
     makePlusOne: function () {
-      this.toggleProperty('isEnabled');
+      if (this.get('isEnabled')) {
+        this.toggleProperty('isEnabled');
+        this.sendAction('action', this.get('id'));
+      }
     }
   }
 });

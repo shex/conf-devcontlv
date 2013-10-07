@@ -15,9 +15,11 @@
   </script>
 
   <script type="text/x-handlebars" data-template-name="index">
-    {{#plus-one}}
-      <img src="img/approve.png" alt="approve"/>
-    {{/plus-one}}
+    {{#each model}}
+      {{#plus-one id=this action="approvePage"}}
+        <img src="img/approve.png" alt="approve"/>
+      {{/plus-one}}
+    {{/each}}
   </script>
 
   <script type="text/x-handlebars" id="components/plus-one">
