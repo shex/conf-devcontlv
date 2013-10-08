@@ -10,20 +10,33 @@
 
   <script type="text/x-handlebars">
     <h2>Welcome to Ember.js</h2>
-
+    {{#link-to 'pages'}}Pages{{/link-to}}
+    {{#link-to 'pics'}}Pictures{{/link-to}}
     {{outlet}}
   </script>
 
-  <script type="text/x-handlebars" data-template-name="index">
-    {{#each model}}
-      {{#plus-one id=this action="approvePage"}}
-        <img src="img/approve.png" alt="approve"/>
-      {{/plus-one}}
-    {{/each}}
+  <script type="text/x-handlebars" data-template-name="pages">
+    {{view Ember.CollectionView itemViewClass = App.PageView contentBinding = model class = "items"}}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="pics">
+    {{view Ember.CollectionView itemViewClass = App.PicView contentBinding = model class = "items"}}
+  </script>
+
+  <script type="text/x-handlebars" id="page">
+    {{#plus-one id=view.content action="approvePage"}}
+      <img src="img/approve.png" alt="approve"/>
+    {{/plus-one}}
+  </script>
+
+  <script type="text/x-handlebars" id="pic">
+    {{#plus-one id=view.content action="approvePic"}}
+      <img src="img/thumb.png" alt="thumb"/>
+    {{/plus-one}}
   </script>
 
   <script type="text/x-handlebars" id="components/plus-one">
-    <div class="plus-one" {{action 'makePlusOne'}}>
+    <div {{action 'makePlusOne'}}>
       <div class="plus-one-image">{{yield}}</div>
     </div>
   </script>
