@@ -6,4 +6,4 @@ Despite the world of Web Standards is developing very slowly, Ember is already e
 applicable in the real life.
 Components are self-contained encapsulation of both the UI and the logic operating it.
 This talk will introduce what are HTML5 Web Components, and how to write reusable components using Ember without
-the need to wait for spec finalization and nor for the browsers to implement it.
+the need to wait for spec finalization nor for the browsers to implement it.
